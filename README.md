@@ -450,7 +450,7 @@ in {
               minMemory = 512;
             };
 
-            # Waywall with custom command for GPU selection
+            # Waywall with custom command for GPU selection - When using full paths you must rebiuld with --impure 
             waywall = {
               enable = true;
               # Simple path (auto-adds "wrap --")
@@ -464,7 +464,7 @@ in {
             # Microsoft account authentication (use nixcraft-auth to login)
             account = {
               username = "YourUsername";
-              accessTokenPath = "/home/user/.local/share/nixcraft/auth/access_token";
+              accessTokenPath = "/home/user/.local/share/nixcraft/auth/access_token"; # When using full paths you must rebiuld with --impure 
               # Skin auto-applied before each launch
               skin = {
                 file = /path/to/skin.png;
@@ -532,8 +532,8 @@ in {
             # Waywall for wall-style resets
             waywall = {
               enable = true;
-              binaryPath = "/path/to/waywall";
-              glfwPath = "/path/to/libglfw.so";
+              binaryPath = "/path/to/waywall"; # When using full paths you must rebiuld with --impure 
+              glfwPath = "/path/to/libglfw.so"; # When using full paths you must rebiuld with --impure 
               # profile = "my-profile";       # Optional waywall profile
               # configDir = /path/to/config;  # Custom config directory
               # configText = "lua code here"; # Inline lua config
@@ -541,7 +541,7 @@ in {
 
             account = {
               username = "YourUsername";
-              accessTokenPath = "/home/user/.local/share/nixcraft/auth/access_token";
+              accessTokenPath = "/home/user/.local/share/nixcraft/auth/access_token";  # When using full paths you must rebiuld with --impure 
             };
 
             binEntry = {
