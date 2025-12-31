@@ -345,7 +345,7 @@ in
                 else parsedMrpack.overrides-plus-server-overrides;
             in (
               builtins.mapAttrs (placePath: path: {
-                method = lib.mkDefault "copy-init";
+                method = lib.mkDefault "symlink";
                 source = path;
               })
               files
@@ -404,7 +404,7 @@ in
           files'symlink = filterAttrs (name: file: file.method == "symlink") enabledFiles;
           files'copy-init = filterAttrs (name: file: file.method == "copy-init") enabledFiles;
 
-          files'entries = filterAttrs (name: file: file.method == "copy-init" || file.method == "symlink") enabledFiles;
+          files'entries = filterAttrs (name: file: file.method == "copy" || file.method == "symlink") enabledFiles;
 
           script'copy-init =
             lib.concatMapAttrsStringSep "\n" (name: file: let
