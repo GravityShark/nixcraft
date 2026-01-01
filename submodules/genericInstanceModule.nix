@@ -241,7 +241,7 @@ in
       # Settings stuff that the user usually doesn't need to alter
       {
         # Set LD_LIBRARY_PATH env var from libs
-        envVars.LD_LIBRARY_PATH = lib.makeLibraryPath config.runtimeLibs;
+        envVars.LD_LIBRARY_PATH = [(lib.makeLibraryPath config.runtimeLibs)];
 
         # Add busybox to runtime programs (needed for init script)
         runtimePrograms = with pkgs; [busybox];
@@ -333,6 +333,7 @@ in
           {
             # Prevents file from being GC-ed
             ".nixcraft/mrpack".source = config.mrpack.file;
+            ".nixcraft/mrpack-unpacked".source = config.mrpack._parsedMrpack.src;
           }
 
           # Set overrides
