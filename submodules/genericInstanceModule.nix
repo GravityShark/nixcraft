@@ -346,7 +346,7 @@ in
                 else parsedMrpack.overrides-plus-server-overrides;
             in (
               builtins.mapAttrs (placePath: path: {
-                method = lib.mkDefault "copy";
+                method = lib.mkDefault "copy-init";
                 source = path;
               })
               files
